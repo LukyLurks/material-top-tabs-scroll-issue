@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, Text, View } from "react-native";
 
-export default function App() {
+function ExempleComponent() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Hello world</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createMaterialTopTabNavigator();
+
+export default function App() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar style="auto" translucent={false} />
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarItemStyle: {
+              width: "auto",
+            },
+            tabBarContentContainerStyle: {
+              width: "auto",
+              paddingHorizontal: 20,
+            },
+            tabBarIndicatorContainerStyle: {
+              marginHorizontal: 20,
+            },
+            tabBarScrollEnabled: true,
+          }}
+        >
+          {[1, 2, 3, 4, 5].map((n) => (
+            <Tab.Screen
+              name={`Example tab #${n}`}
+              key={n}
+              component={ExempleComponent}
+            />
+          ))}
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+}
