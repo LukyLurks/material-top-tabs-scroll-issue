@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-tab-view/src/TabBar.tsx b/node_modules/react-native-tab-view/src/TabBar.tsx
+index e8d0b4c..061e4ac 100644
+--- a/node_modules/react-native-tab-view/src/TabBar.tsx
++++ b/node_modules/react-native-tab-view/src/TabBar.tsx
+@@ -113,7 +113,7 @@ const getComputedTabWidth = (
+ };
+ 
+ const getMaxScrollDistance = (tabBarWidth: number, layoutWidth: number) =>
+-  tabBarWidth - layoutWidth;
++  tabBarWidth;
+ 
+ const getTranslateX = (
+   scrollAmount: Animated.Value,
